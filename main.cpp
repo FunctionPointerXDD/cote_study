@@ -1,7 +1,6 @@
 /**
- * 36. 삽입정렬 (Insert Sort)
+ * 52. Ugly Numbers
  */
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -9,40 +8,26 @@
 
 using namespace std;
 
+
 int main(void)
 {
-    //freopen("input.txt", "rt", stdin);
-    int n;
-    cin >> n;
+	//freopen("input.txt", "rt", stdin);	
+	int n;
+	cin >> n;
 
-    vector<int> arr(n);
+	int ugly = 1;
 
-    for (int i = 0; i < n; ++i)
-	    cin >> arr[i];
-
-	for (int i = 0; i < n - 1; ++i)
+	int i = 2;
+	while (1)
 	{
-		for (int j = i + 1; j < n; ++j)
+		if (i % 2 == 0 || i % 3 == 0 || i % 5 == 0)
 		{
-			if (arr[i] > 0 && arr[j] < 0)
-			{
-				int idx = j;
-				while (i != idx)
-				{
-					int tmp = arr[idx - 1];
-					arr[idx - 1] = arr[idx];
-					arr[idx] = tmp;
-					idx--;
-				}
-				break;
-			}
+			ugly = i;
 		}
+
 	}
 
-	for (int i = 0; i < n; ++i)
-	{
-		cout << arr[i] << ' ';
-	}
 
-    return 0;
+
+	return 0;
 }
