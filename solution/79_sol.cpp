@@ -10,6 +10,7 @@
 
  using namespace std;
 
+ // 갔던 정점 체크 용도
  int check[101];
 
  //using priority_queue
@@ -61,11 +62,11 @@
 
 		// 연결된 모든 정점을 가보고 체크한 후 큐에 집어넣는 것이 아니라
 		// 현재 정점만 체크하고 우선순위 큐에 집어넣은 후 나중에 우선순위에서 나오는 정점을 체크한다.
-		// 이러한 점 때문에 최단 거리 문제를 푸는 것과 차이가 있다.
+		// 이러한 점 때문에 BFS로 최단 거리 문제를 푸는 것과 차이가 있다.
 		if (check[v] == 0)
 		{
 			check[v] = 1;
-			res += cost;
+			res += cost; //정점으로 가는 간선의 비용을 더해준다.
 			for (size_t i = 0; i < vec[v].size(); ++i)
 				Q.push(Prim(vec[v][i].first, vec[v][i].second));
 		}
