@@ -40,6 +40,7 @@ void dfs(int row, int col)
 			check[_row][_col] = 1;
 			dfs(_row, _col);
 			check[_row][_col] = 0;
+			// 경로의 가지수를 구하는 것이기 때문에 지나간 경로를 해제해 준다.
 		}
 	}
 }

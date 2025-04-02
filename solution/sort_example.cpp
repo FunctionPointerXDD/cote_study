@@ -21,7 +21,9 @@ struct Loc{
 	// 오름차순으로 정리 (t1 < t2)
 	bool operator<(const Loc &param) const
 	{
-		if (this->x != param.x) return x < param.x;
+		// x -> y -> z 순으로 우선순위를 갖는다.
+		// 만약 중복된 수가 존재하면 그 다음 우선순위로 정렬한다.
+		if (this->x != param.x) return x < param.x; 
 		if (this->y != param.y) return y < param.y;
 		if (this->z != param.z) return z < param.z;
 		return false;
