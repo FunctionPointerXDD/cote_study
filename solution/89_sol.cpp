@@ -38,7 +38,7 @@ int bfs(queue<pair<int, int>> &Q, vector<vector<int>> &box)
 				if (box[_x][_y] == 0)
 				{
 					Q.push({_x, _y});
-					box[_x][_y] = 1; //미리 푸시한 큐들의 위치를 1로 바꾸어주는 것이 좋고, 이 문제에서는 반드시 그래야 한다.
+					box[_x][_y] = 1; //미리 체크할 배열을 1로 바꾸어주는 것이 좋고, 이 문제에서는 반드시 그래야 한다.
 					add++;
 				}
 			}

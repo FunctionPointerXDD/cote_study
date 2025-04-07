@@ -1,70 +1,28 @@
 /**
- * 90. 라이언 킹 심바(삼성 SW역량평가 기출: BFS활용) 난이도 상
- * 
- * 구현 + BFS 문제다. 문제를 이해한 것을 BFS방식으로 잘 구현해야 한다.
- * 나는 이 문제를 처음 접했을 때, 문제를 이해하는 데 시간이 오래걸렸고,
- * 이해를 했으나, 구현하는 방법에서 많이 헤맸다.
- * 
- * 핵심은 큐에 넣을 수 있는 경우의 수(State)와 심바의 상태 정보(Simba)를 분리해서 구현하는 것이다!
- * 심바의 현재 위치마다 토끼를 만날 수 있는 최단 거리를 반복해서 구하는 것이다.
- * 
- * 심바를 기준으로 계속 상하좌우로 갈 수 있는 위치를 
- * 우선순위 큐에 삽입하면서 토끼가 나오기 전까지 이동 거리를 기록한다.
- * 
- * 그러다가 만약 큐에서 나온 위치가 토끼가 있는 위치일 때
- * 심바의 상태를 업데이트 및 큐를 모두 비우고, 이전에 체크한 위치를 다시 0으로 초기화 한다.
- * -> 이유는 토끼가 나오기 전까지 기록한 정보는 기존 심바가 있던 위치에서 최단거리로 갈 수 있는 정보를 기록한 것이기 때문이다.
+ * 입출력 속도 향상시키기 + etc ...
  */
 #include <iostream>
-#include <algorithm>
+#include <string>
+#include <fstream>
 #include <vector>
-#include <queue>
+//#include <bits/stdc++.h> // GNU GCC에서 제공하는 비공식 헤더이다.
+// 여기서는 적용이 안되는데 이유를 잘 모르겠다. 
+// 프로그래머스에서 사용할 수 있다. (이것을 사용하면 왠만한 라이브러리는 전부 사용 가능하다.)
+// 컴파일 타임은 조금 오래 걸린다. (그러나 대부분 컴파일 타임을 시험이나 대회에서 측정하지는 않는다.)
 
 using namespace std;
 
-struct State {
-	int dist;
-	int row;
-	int col;
-	State(int a, int b) : row(a), col(b) {}
-
-	//최소 힙
-	bool operator<(const State &p) const
-	{
-		// if (dist == p.dist)
-		// {
-		// 	if (row == p.row) return col > p.col;
-		// 	else return row > p.row;
-		// }
-		// else return dist > p.dist;
-
-		if (dist != p.dist) return dist > p.dist;
-		if (row != p.row) return row > p.row;
-		else return col > p.col;
-	}
-};
-
-struct Simba {
-	int x;
-	int y;
-	int size;
-	int eat;
-
-	void update()
-	{
-		eat = 0;
-		size++;
-	}
-};
-
-int n;
-int map[25][25];
-int check[25][25];
-int t;
-
 int main(void)
 {
-	cin >> n;
+	ios_base::sync_with_stdio(false); // 입출력 속도가 빨라진다. (C 라이브러리와 연동을 끊는다?)
+	cin.tie(0); // 추가적인 속도 향상 옵션
 
+	freopen("input.txt", "rt", stdin);
+	int n, min = 2147483647;
+	cin >> n;
+	vector<int> a(n);
+	for (int i = 0; i < n; ++i)
+		if (a[i]<min) min=a[i];
+	cout << min;
 	return 0;
 }

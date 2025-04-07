@@ -1,5 +1,8 @@
-6 4
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 0
-0 0 0 0 0 1
+7
+book
+dog
+cat
+dog
+cat
+book
+cat
